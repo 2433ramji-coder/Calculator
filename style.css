@@ -1,51 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Merriweather", serif;
-}
-
-body{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(45deg, #0a0a0a , #3a4452);
-}
-
-.calculator{
-    border: 1px solid #717377;
-    padding: 20px;
-    border-radius: 16px;
-    background: transparent;
-    box-shadow: 0px 3px 15px rgb(113, 115, 119, 0.5);
-}
-
-input{
-    width: 320%;
-    border: none;
-    padding: 24px;
-    margin: 10px;
-    background:  transparent;
-    box-shadow: 0px 3px 15px rgb(84, 84, 84, 0.1);
-    font-size: 40px;
-    text-align: right;
-    cursor: pointer;
-}
-input::placeholder{
-    color: #ffffff;
-}
-
-button{
-    border: none;
-    width: 60px;
-    height: 60px;
-    margin: 10px;
-    border-radius: 50%;
-    background: transparent;
-    color: #ffffff;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-}
+:root {
+      --bg: #f2f4f8;
+      --display: #e1e8ef;
+      --button: #f6f7fb;
+      --operator: #ffeecc;
+      --accent: #2da1ff;
+      --action: #fbc0a8;
+      --text: #35363a;
+      --shadow-dark: #cfd8dc;
+      --shadow-light: #fff;
+      --positive: #10b981;
+      --negative: #ef4444;
+      --zero: #fbbf24;
+    }
+    body.dark {
+      --bg: #131520;
+      --display: #19213c;
+      --button: #191c28;
+      --operator: #384b65;
+      --accent: #2da1ff;
+      --action: #ca6b59;
+      --text: #dde6f6;
+      --shadow-dark: #181e29;
+      --shadow-light: #26334a;
+      --positive: #38d9a9;
+      --negative: #ff6363;
+      --zero: #ffd43b;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.5s, color 0.5s;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+    }
+    .mood-calculator {
+      width: 355px;
+      margin: 55px auto;
+      padding: 18px 18px 20px 18px;
+      border-radius: 30px;
+      background: var(--bg);
+      box-shadow: 8px 8px 22px var(--shadow-dark),
+                  -8px -8px 22px var(--shadow-light);
+      text-align: center;
+      transition: background 0.5s;
+    }
+    .display {
+      font-size: 2.1rem;
+      margin-bottom: 12px;
+      border-radius: 13px;
+      background: var(--display);
+      color: var(--text);
+      padding: 14px;
+      min-height: 2.3rem;
+      text-align: right;
+      letter-spacing: 1px;
+      box-shadow: 2px 2px 8px var(--shadow-dark),
+                  -3px -2px 10px var(--shadow-light);
+      word-break: break-all;
+      transition: background 0.5s, color 0.5s;
+    }
+    .mood {
+      font-size: 2.6rem;
+      margin-bottom: 18px;
+      transition: color 0.3s;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(5, 61px);
+      grid-template-rows: repeat(5, 48px);
+      gap: 10px;
+      justify-content: center;
+    }
+    .button {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 2px 2px 12px var(--shadow-dark),
+                  -2px -2px 12px var(--shadow-light);
+      font-size: 1.18rem;
+      background: var(--button);
+      color: var(--text);
+      font-weight: 500;
+      cursor: pointer;
+      transition: 
+        background 0.2s,
+        color 0.2s,
+        box-shadow 0.2s,
+        transform 0.15s;
+      outline: none;
+      position: relative;
+    }
+    .operator { background: var(--operator); color: var(--accent);}
+    .action   { background: var(--action);  color: var(--accent);}
+    .button:active {
+      box-shadow: 1px 1.5px 8px var(--shadow-dark);
+      background: #e0ebff;
+      transform: scale(0.96);
+    }
+    .positive { color: var(--positive);}
+    .negative { color: var(--negative);}
+    .zero { color: var(--zero);}
+    #darkModeToggle {
+      margin-bottom: 14px;
+      border-radius: 12px;
+      padding: 8px 18px;
+      background: var(--button);
+      color: var(--accent);
+      border: none;
+      font-size: 1.13rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      box-shadow: 2px 2px 9px var(--shadow-dark),
+                  -2px -2px 9px var(--shadow-light);
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, box-shadow 0.2s;
+    }
+    #darkModeToggle:active {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    @media (max-width: 405px) {
+      .mood-calculator {width: 98vw; padding: 2vw;}
+      .buttons {grid-template-columns: repeat(5, 18vw); grid-template-rows: repeat(5, 13vw);}
+      .button {font-size: 1rem; width: 100%;}
+    }
