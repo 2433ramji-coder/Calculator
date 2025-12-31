@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Calculator -By Ramji</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <title>Mood Calculator</title>
 </head>
 <body>
-    <div class="calcultor">
-            <input type="text" placeholder="0">
-            <div>
-                <button>AC</button>
-                <button>DEL</button>
-                <button>%</button>
-                <button>/</button>
-            </div>
-            <div>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>*</button>
-            </div>
-            <div>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>-</button>
-            </div>
-            <div>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>+</button>
-            </div>
-            <div>
-                <button>00</button>
-                <button>0</button>
-                <button>.</button>
-                <button>=</button>
-            </div>
+  <button id="darkModeToggle">🌙 Dark Mode</button>
+  <div class="mood-calculator">
+    <div id="display" class="display">0</div>
+    <div id="mood" class="mood">🙂</div>
+    <div class="buttons">
+      <button class="button operator" onclick="addToDisplay('(')">(</button>
+      <button class="button operator" onclick="addToDisplay(')')">)</button>
+      <button class="button operator" onclick="pi()">π</button>
+      <button class="button operator" onclick="squareRoot()">√</button>
+      <button class="button action" onclick="clearDisplay()">C</button>
+
+      <button class="button action" onclick="clearEntry()">EC</button>
+      <button class="button" onclick="addToDisplay('7')">7</button>
+      <button class="button" onclick="addToDisplay('8')">8</button>
+      <button class="button" onclick="addToDisplay('9')">9</button>
+
+      <button class="button operator" onclick="addToDisplay('/')">÷</button>
+      <button class="button action" onclick="backspace()">⌫</button>
+      <button class="button" onclick="addToDisplay('4')">4</button>
+      <button class="button" onclick="addToDisplay('5')">5</button>
+      <button class="button" onclick="addToDisplay('6')">6</button>
+
+      <button class="button operator" onclick="addToDisplay('*')">×</button>
+      <button class="button operator" onclick="percentage()">%</button>
+      <button class="button" onclick="addToDisplay('1')">1</button>
+      <button class="button" onclick="addToDisplay('2')">2</button>
+      <button class="button" onclick="addToDisplay('3')">3</button>
+
+      <button class="button operator" onclick="addToDisplay('-')">−</button>
+      <button class="button operator" onclick="square()">x²</button>
+      <button class="button" onclick="addToDisplay('0')">0</button>
+      <button class="button" onclick="addToDisplay('.')">.</button>
+      <button class="button operator" onclick="addToDisplay('+')">+</button>
+
+      <button class="button" style="grid-column: 4 / span 2;" onclick="calculate()">=</button>
     </div>
+  </div>
 </body>
 </html>
